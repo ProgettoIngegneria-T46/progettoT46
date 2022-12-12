@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "node-ts server/server.ts",
+    "server-dev": "node-dev server/server.ts"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +35,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.8.2"
+    "typescript": "~4.8.2",
+    "concurrently": "7.6.0",
+    "ts-node": "10.9.1",
+    "node-dev": "7.4.3"
   }
 }
