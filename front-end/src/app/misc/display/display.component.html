@@ -1,6 +1,6 @@
 
 <main>
-    <img [src]="imgUrl" alt="itemImage" class="item_img">
+    <img [src]='imgUrl | safe:"url"' alt="itemImage" class="item_img">
     <div class="data">
         <span class="name">
             {{name}}

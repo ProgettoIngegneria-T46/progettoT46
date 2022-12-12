@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent {
-  imgUrl = "https://www.w3schools.com/w3images/jeans3.jpg";
+  id: string = "123456"
+  imgUrl = "http://localhost:3000/product/123456/image";
   name: string = "none";
   price = 0.00;
 }
