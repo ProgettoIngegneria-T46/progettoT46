@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent {
-  @Input() title: string = 'Title';
-  @Input() price: number = 0.00;
-  @Input() imgUrl: string = '';
+  imgUrl = "https://www.w3schools.com/w3images/jeans3.jpg";
+  name: string = "none";
+  price = 0.00;
 }
