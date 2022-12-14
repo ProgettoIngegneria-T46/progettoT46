@@ -16,7 +16,7 @@ import { CorsiComponent } from './corsi/corsi.component';
     HomeComponent,
     ShopComponent,
     AbbonamentiComponent,
-    CorsiComponent
+    CorsiComponent,
   ],
   imports: [
     CommonModule,
