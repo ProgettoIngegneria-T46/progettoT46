@@ -1,11 +1,4 @@
-<p>shop works!</p>
-
-
-<form>
-    <input type="text" name="name" id="name" #name>
-    <input type="file" name="img" id="img" #img>
-    <input type="number" name="price" id="price" #price>
-
-    <button (click)="addProduct(name.value, img.value, price.value)">Add Product</button>
-
-</form>
+<app-header></app-header>
+<div class="products">
+    <app-display *ngFor="let p of products" [product]="p" ></app-display>
+</div>

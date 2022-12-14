@@ -1,0 +1,46 @@
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
+    span {
+        font-size: 25px;
+        font-family: 'Anton', sans-serif;
+    }
+
+    span.title {
+        background-clip: text;
+        color: transparent;
+        background-image: url("../../../assets/images/bg_1.jpg");
+        background-size: cover;
+        text-transform: uppercase;
+
+        a {
+            text-decoration: none;
+            color: transparent;
+        }
+    }
+
+    .menu {
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                .menu-item {
+                    color: white;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: #ff0000;
+                    }
+                }
+            }
+        }
+    }
+}

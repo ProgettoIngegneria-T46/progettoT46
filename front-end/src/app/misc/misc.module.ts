@@ -4,6 +4,8 @@ import { DisplayComponent } from './display/display.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginModule } from '../login/login.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -14,7 +16,8 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   imports: [
     CommonModule,
-    PipesModule
+    PipesModule,
+    AppRoutingModule
   ],
   exports: [
     DisplayComponent,

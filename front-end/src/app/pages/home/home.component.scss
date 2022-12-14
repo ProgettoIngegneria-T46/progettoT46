@@ -1,0 +1,45 @@
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    div.content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-grow: 1;
+
+        span {
+            //make text uppercase
+            text-transform: uppercase;
+            font-family: 'Anton', sans-serif;
+            color: transparent;
+            font-size: 15em;
+            line-height: 1em;
+            background-image: url("../../../assets/images/bg_1.jpg");
+            background-clip: text;
+            background-size: cover;
+            // text-align: center;
+        }
+    }
+}
+
+div.background {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+
+    div.image {
+        height: 100%;
+        width: 45%;
+        float: right;
+        background-image: url("../../../assets/images/bg_2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+}

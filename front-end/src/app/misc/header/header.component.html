@@ -1,1 +1,25 @@
-
+<main>
+    <span class="title">
+        <a routerLink="/home">
+            CHAD GYM
+        </a>
+    </span>
+    <div class="menu">
+        <ul>
+            <li *ngFor="let item of menuItems">
+                <span>
+                    <a [routerLink]="item.link" class="menu-item">
+                        {{item.name}}
+                    </a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <a (click)="null" class="menu-item">
+                        Login
+                    </a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</main>

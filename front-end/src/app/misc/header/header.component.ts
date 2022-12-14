@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  
+  menuItems = [
+    {
+      name: "Abbonamenti",
+      link: "/abbonamenti"
+    },
+    {
+      name: "Corsi",
+      link: "/corsi"
+    },
+    {
+      name: "Shop",
+      link: "/shop"
+    },
+    {
+      name: "Contattaci",
+      link: "/contattaci"
+    }
+  ]
 }

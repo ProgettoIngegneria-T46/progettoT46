@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Product } from 'src/app/shared/interfaces';
+import { productsUrl } from 'src/app/shared/roots';
 
 @Component({
   selector: 'app-shop',
@@ -7,23 +10,11 @@ import { Component } from '@angular/core';
 })
 export class ShopComponent {
 
-  addProduct(name: string, image: string, price: string){
-    //name is a string, image is a file, price is a string
-    //send a request to the server to add the product
+  products: Product[] = [];
 
-    //create a form data object
-    const formData = new FormData();
-    //add the name, image and price to the form data object
-    formData.append("name", name);
-    formData.append("image", image);
-    formData.append("price", price);
-    //send the request to the server
-    fetch("http://localhost:3000/product/1", {
-      method: "PUT",
-      body: formData
-    }).then( res => {
-      console.log(res);
+  constructor(private httpClient: HttpClient) {
+    this.httpClient.get(productsUrl).subscribe((data) => {
+      this.products = data as Product[];
     });
   }
-
 }
