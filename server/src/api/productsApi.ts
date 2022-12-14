@@ -12,6 +12,7 @@ export class ProductAPI {
         this.app.get("/api/product/:productID", this.getProduct);
         this.app.get("/api/product/:productID/image", this.getProductImage);
         this.app.put("/api/product", this.putProduct);
+        this.app.delete("/api/product", this.deleteProduct);
     }
 
     private readonly pathToImages = path.resolve(path.join(__dirname, '../../images/'));
@@ -69,6 +70,11 @@ export class ProductAPI {
     }
 
     private putProduct = async (req: Express.Request, res: Express.Response) => {
+        const { token } = req.body;
+        if (!(await checkToken(token))){
+            res.status(401).send("invalid token");
+            return;
+        }
         if (!req.files || !req.body.name || !req.body.price) {
             res.status(400).send("invalid request");
             return;
@@ -94,6 +100,7 @@ export class ProductAPI {
             return;
         }
         await productModel.deleteOne({ _id: productID });
+        fs.rmSync(path.join(this.pathToProducts, productID + ".png"));
         res.status(200).send("ok");
     }
 }
