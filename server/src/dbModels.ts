@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
 export const userModel = mongoose.model("users", userSchema);
 
 const loginTokenSchema = new mongoose.Schema({
-    token: { type: String, required: true },
     userID: { type: String, required: true },
+    expires: { type: Date, required: true },
 });
 
 export const loginTokenModel = mongoose.model("loginTokens", loginTokenSchema);
