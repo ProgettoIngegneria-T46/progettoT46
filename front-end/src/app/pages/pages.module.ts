@@ -7,6 +7,7 @@ import { ShopComponent } from './shop/shop.component';
 import { MiscModule } from '../misc/misc.module';
 import { AbbonamentiComponent } from './abbonamenti/abbonamenti.component';
 import { CorsiComponent } from './corsi/corsi.component';
+import { LoginModule } from '../login/login.module';
 
 
 
@@ -21,7 +22,8 @@ import { CorsiComponent } from './corsi/corsi.component';
   imports: [
     CommonModule,
     MiscModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginModule
   ],
   exports: [
     ContactsComponent,
