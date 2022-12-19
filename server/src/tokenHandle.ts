@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { loginTokenModel } from "./dbModels";
+import { loginTokenModel, userModel } from "./dbModels";
 
 const tokenTime = 10 * 60 * 1000;
 
 
-export const loginToken = async (userID: string) => {
+export const loginToken = async (userID: string): Promise<string> => {
     const _token = await loginTokenModel.find({ userID });
     if (_token && _token.length > 0) {
         console.log("Token found");
@@ -22,7 +22,7 @@ export const loginToken = async (userID: string) => {
     return generateToken(userID);
 }
 
-const generateToken = async (userID: string) => {
+const generateToken = async (userID: string): Promise<string> => {
     //generate token
     //save token in db
     const loginToken = new loginTokenModel({
@@ -33,7 +33,7 @@ const generateToken = async (userID: string) => {
     return token._id.toString();
 }
 
-export const checkToken = async (token: string) => {
+export const checkToken = async (token: string): Promise<boolean> => {
     const _token = await loginTokenModel.find({ _id: token });
     if (_token && _token.length > 0) {
         //if token expired
@@ -44,6 +44,18 @@ export const checkToken = async (token: string) => {
         return true;
     }
     return false;
+}
+
+export const isAdmin = async (token: string): Promise<boolean> => {
+    if (!checkToken(token)){
+        return false;
+    }
+    const user = await loginTokenModel.findOne({ _id: token });
+    if(!user){
+        return false;
+    }
+    const ret = await userModel.findOne({_id: user.userID});
+    return ret?.isAdmin || false;
 }
 
 export const deleteToken = async (token: string) => {

@@ -17,4 +17,8 @@ export class ShopComponent {
       this.products = data as Product[];
     });
   }
+
+  funzione() {
+console.log("funzione");
+  }
 }

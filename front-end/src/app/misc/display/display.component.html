@@ -1,6 +1,7 @@
 
 <main>
     <img [src]='imgUrl | safe:"url"' alt="itemImage" class="item_img">
+    <!-- safe(imgUrl, "url") -->
     <div class="data">
         <span class="name">
             {{product.name}}

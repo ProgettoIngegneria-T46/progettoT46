@@ -20,7 +20,8 @@ export class DisplayComponent implements OnInit{
   @Input() product: Product = {
     id: "none",
     name: "none",
-    price: 0.00
+    price: 0.00,
+    description: "none"
   }
   // @Input() imgUrl = "http://localhost:3000/product/123456/image";
 }

@@ -23,7 +23,7 @@ import { LoginModule } from '../login/login.module';
     CommonModule,
     MiscModule,
     HttpClientModule,
-    LoginModule
+    LoginModule,
   ],
   exports: [
     ContactsComponent,

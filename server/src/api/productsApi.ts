@@ -3,8 +3,7 @@ import path from "path";
 import { productModel } from "../dbModels";
 import fs from "fs";
 import { UploadedFile } from "express-fileupload";
-import mongoose from "mongoose";
-import { checkToken } from "../tokenHandle";
+import { isAdmin } from "../tokenHandle";
 
 export class ProductAPI {
     constructor(private app: Express.Application) {
@@ -25,7 +24,8 @@ export class ProductAPI {
                 return {
                     id: item._id,
                     name: item.name,
-                    price: item.price
+                    price: item.price,
+                    description: item.description,
                 }
             });
             res.send(returnData);
@@ -71,7 +71,7 @@ export class ProductAPI {
 
     private putProduct = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
-        if (!(await checkToken(token))){
+        if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;
         }
@@ -95,7 +95,7 @@ export class ProductAPI {
 
     private deleteProduct = async (req: Express.Request, res: Express.Response) => {
         const { token, productID } = req.body;
-        if (!(await checkToken(token))){
+        if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;
         }
