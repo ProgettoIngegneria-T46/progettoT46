@@ -4,19 +4,22 @@
         <i-bs name="pencil-fill" height="25px" width="25px"></i-bs>
     </div>
     <form class="{{registration? 'registration' : ''}}">
-        <input type="email" id="email" placeholder="Username" #email>
-        <input type="password" id="password" placeholder="Password" #password>
-
+        <input type="email" id="email" ngModel placeholder="Email" #email required="true">
+        <input type="password" id="password" ngModel placeholder="Password" #password required>
         <!-- cf, name, surname, birthDate, phoneNumber, email, address, password, subscriptionDate -->
-        <input type="text" id="cf" placeholder="Codice Fiscale" #cf *ngIf="registration">
-        <input type="text" id="name" placeholder="Nome" #name *ngIf="registration">
-        <input type="text" id="surname" placeholder="Cognome" #surname *ngIf="registration">
-        <input type="date" id="birthDate" placeholder="Data di nascita" #birthDate *ngIf="registration">
-        <input type="text" id="phoneNumber" placeholder="Numero di telefono" #phoneNumber *ngIf="registration">
-        <input type="text" id="address" placeholder="Indirizzo" #address *ngIf="registration">
-        <input type="date" id="subscriptionDate" placeholder="Data di iscrizione" #subscriptionDate *ngIf="registration">
+        <input type="text" id="cf" ngModel placeholder="Codice Fiscale" #cf *ngIf="registration" required>
+        <input type="text" id="name" ngModel placeholder="Nome" #name *ngIf="registration" required>
+        <input type="text" id="surname" ngModel placeholder="Cognome" #surname *ngIf="registration" required>
+        <input type="text" onfocusout="if(!this.value){this.type = 'text'}" onfocus="(this.type = 'date')" id="birthDate" ngModel placeholder="Data di nascita" #birthDate *ngIf="registration" required>
+        <input type="text" id="phoneNumber" ngModel placeholder="Numero di telefono" #phoneNumber *ngIf="registration" required>
+        <input type="text" id="address" ngModel placeholder="Indirizzo" #address *ngIf="registration" required>
+        <!-- <input type="date" id="subscriptionDate" placeholder="Data di iscrizione" #subscriptionDate *ngIf="registration"> -->
 
-        <button type="submit" (click)="login(email.value, password.value)">{{registration? "Registrati" : "Accedi"}}</button>
-        <span>oppure <span (click)="registration = !registration" class="register-btn">{{registration? "Registrati" : "Accedi"}}</span></span>
+        <button type="submit" 
+            (click)="!registration? 
+            login(email.value, password.value) : 
+            register()"
+            >{{registration? "Registrati" : "Accedi"}}</button>
+        <span>oppure <span (click)="registration = !registration" class="register-btn">{{registration? "Accedi" : "Registrati"}}</span></span>
     </form>
 </main>

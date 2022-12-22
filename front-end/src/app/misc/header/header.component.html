@@ -15,11 +15,19 @@
             </li>
             <li>
                 <span>
-                    <a (click)="null" class="menu-item">
-                        Login
+                    <a class="menu-item" (click)="toggleLogin()" *ngIf="!loginService.token; else logout">
+                        {{loginService.token ? 'Logout' : 'Login'}}
                     </a>
+                    <ng-template #logout>
+                        <a class="menu-item" (click)="loginService.logout()">
+                            Logout
+                        </a>
+                    </ng-template>
                 </span>
             </li>
         </ul>
     </div>
 </main>
+<div class="login center-login">
+    <app-login-form (loginStateChange)="toggleLogin()" ></app-login-form>
+</div>

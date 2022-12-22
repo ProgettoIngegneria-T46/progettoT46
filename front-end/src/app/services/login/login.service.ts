@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { loginUrl, logoutUrl } from 'src/app/shared/routes';
 
 @Injectable({
@@ -11,11 +11,14 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
+  @Output() loginStateChange = new EventEmitter<string | undefined>();
+
   login(email: string, password: string) {
     const req = this.httpClient.post(loginUrl, { email, password }).subscribe((res) => {
       req.unsubscribe();
       console.log(res);
       this.token = (res as any).token;
+      this.loginStateChange.emit(this.token);
     })
   }
 
@@ -25,11 +28,13 @@ export class LoginService {
       req.unsubscribe();
       console.log(res);
       this.token = (res as any).token;
+      this.loginStateChange.emit(this.token);
     })
   }
 
   logout() {
     this.httpClient.post(logoutUrl, { token: this.token });
     this.token = undefined;
+    this.loginStateChange.emit(this.token);
   }
 }

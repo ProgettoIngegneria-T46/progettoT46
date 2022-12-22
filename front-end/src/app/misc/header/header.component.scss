@@ -38,9 +38,27 @@ main {
 
                     &:hover {
                         color: #ff0000;
+                        cursor: pointer;
                     }
                 }
             }
         }
+    }
+}
+
+
+.center-login{
+    visibility: hidden;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    app-login-form{
+        visibility: visible;
+        z-index: 1;
     }
 }

@@ -24,6 +24,7 @@ main {
         border-radius: 3px;
         transform: translate(2px, -38px);
         z-index: -1;
+        background-color: white;
     }
 
     h1{
@@ -55,27 +56,45 @@ main {
     }
 
     form {
-        $color: $color;
         padding: 40px;
         display: flex;
         flex-direction: column;
         // justify-content: center;
         align-items: center;
         gap: 30px;
-        
+
         &.registration {
             gap: 10px;
         }
 
-        input {
-            $color: $color;
+        div.birth-input{
+            display: flex;
+            flex-direction: column;
+            // gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+            // align-items: center;
+            color: $color;
+        }
+
+        input, input[type="date"] {
             display: block;
             border: 0;
             border-bottom: 2px solid $color;
             height: 30px;
-            color: $color;
+            //color: $color;
             width: 100%;
             font-size: 1em;
+            font-family: 'Roboto';
+
+            &::placeholder {
+                color: $color;
+            }
+
+            &:focus {
+                outline: none;
+                border-bottom: 2px solid $highlight;
+            }
         }
 
         button{
