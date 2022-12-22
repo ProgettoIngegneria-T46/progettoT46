@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces';
-import { productsUrl, productUrl } from 'src/app/shared/roots';
+import { productsUrl, productUrl } from 'src/app/shared/routes';
 
 @Component({
   selector: 'app-display',

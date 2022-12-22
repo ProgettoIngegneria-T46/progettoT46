@@ -1,17 +1,109 @@
-main{
-    form{
+$highlight: rgb(190, 74, 90);
+$color: #999;
 
+main {
+    font-family: 'Roboto';
+    margin: 40px;
+    width: 300px;
+    padding: 0;
+    padding-top: 30px;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-top: 1px solid;
+    border-radius: 3px;
+    border-color: $color;
+    background-color: white;
+    
+    &::before{
+        content: '';
+        border: .5px solid $color;
+        position: absolute;
+        height: 20px;
+        width: 290px;
+        border-radius: 3px;
+        transform: translate(2px, -38px);
+        z-index: -1;
+    }
 
-        .form-group{
-            label{
-                
-            }
-            input{
-                
-            }
+    h1{
+        $color: $highlight;
+        text-transform: uppercase;
+        font-size: larger;
+        border-left: 3px solid $highlight;
+        color: $color;
+        line-height: 1.5em;
+        padding-left: 37.75px;
+        transform: translateX(-2.25px);
+    }
+
+    div.title-badge{
+        background-color: $highlight;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(270px, -40px);
+
+        i-bs{
+            transform: translateY(2px);
+            color: white;
         }
-        .btn{
-            
+    }
+
+    form {
+        $color: $color;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        gap: 30px;
+        
+        &.registration {
+            gap: 10px;
+        }
+
+        input {
+            $color: $color;
+            display: block;
+            border: 0;
+            border-bottom: 2px solid $color;
+            height: 30px;
+            color: $color;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        button{
+            background-color: white;
+            font-size: 1em;
+            border: 1px solid $color;
+            height: 40px;
+            width: 70%;
+            color: $color;
+            border: 2px solid $color;
+            border-radius: 3px;
+
+            &:hover{
+                background-color: $highlight;
+                color: white;
+            }
+
+        }
+
+        span{
+            color: $color;
+            .register-btn{
+                color: $highlight;
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

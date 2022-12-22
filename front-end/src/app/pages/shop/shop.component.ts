@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces';
-import { productsUrl } from 'src/app/shared/roots';
+import { productsUrl } from 'src/app/shared/routes';
 
 @Component({
   selector: 'app-shop',

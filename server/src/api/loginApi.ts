@@ -42,4 +42,31 @@ export class LoginAPI {
         deleteToken(token);
         res.status(200).send("ok");
     }
+
+    register = async (req: Express.Request, res: Express.Response) => {
+        const { cf, name, surname, birthDate, phoneNumber, email, address, password, subscriptionDate } = req.body;
+        //if one field is missing, return error
+        if (!cf || !name || !surname || !birthDate || !phoneNumber || !email || !address || !password || !subscriptionDate) {
+            res.status(400).send("invalid request: one or more fields are missing");
+            return;
+        }
+        const user = await userModel.find({ email });
+        if (user.length > 0) {
+            res.status(400).send("user already exists");
+            return;
+        }
+        const newUser = new userModel({
+            cf,
+            name,
+            surname,
+            birthDate,
+            phoneNumber,
+            email,
+            address,
+            password,
+            subscriptionDate
+        });
+        const token = await newUser.save();
+        res.status(200).send({token});
+    }
 }

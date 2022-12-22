@@ -8,6 +8,8 @@ import { MiscModule } from '../misc/misc.module';
 import { AbbonamentiComponent } from './abbonamenti/abbonamenti.component';
 import { CorsiComponent } from './corsi/corsi.component';
 import { LoginModule } from '../login/login.module';
+import { AdminHeaderComponent } from './shop/admin/admin-header/admin-header.component';
+import { FormNuovoCorsoComponent } from './shop/admin/form-nuovo-corso/form-nuovo-corso.component';
 
 
 
@@ -18,6 +20,8 @@ import { LoginModule } from '../login/login.module';
     ShopComponent,
     AbbonamentiComponent,
     CorsiComponent,
+    AdminHeaderComponent,
+    FormNuovoCorsoComponent,
   ],
   imports: [
     CommonModule,

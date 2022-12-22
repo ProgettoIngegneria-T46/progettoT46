@@ -14,6 +14,8 @@ export class LoginFormComponent {
 
   constructor(public loginService: LoginService) { }
 
+  registration = true;
+
   login(email: string, password: string) {
     this.loginService.login(email, password);
   }

@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  @Input() bg_color = "transparent";
+  background_color: string = "background-color: " + this.bg_color;
   
   menuItems = [
     {
@@ -25,4 +27,9 @@ export class HeaderComponent {
       link: "/contattaci"
     }
   ]
+
+
+  ngOnInit(): void {
+    this.background_color = "background-color: " + this.bg_color + ";";
+  }
 }
