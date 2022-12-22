@@ -25,8 +25,12 @@ class Course {
 }
 
 export class CoursesAPI {
-    constructor(app: Express.Application) {
-
+    constructor(private app: Express.Application) {
+        this.app.get("/api/courses", this.getCorses);
+        this.app.get("/api/course/:courseID", this.getCourse);
+        this.app.get("/api/course/:courseID/image", this.getCourseImage);
+        this.app.put("/api/course", this.putCourse);
+        this.app.delete("/api/course", this.deleteCourse);
     }
 
     private readonly pathToImages = path.resolve(path.join(__dirname, '../../images/'));
@@ -77,7 +81,7 @@ export class CoursesAPI {
             res.status(401).send("invalid token");
             return;
         }
-        if (!req.files || !req.body.name || !req.body.price) {
+        if (!req.files || !req.body.name || !req.body.price || !req.body.description) {
             res.status(400).send("invalid request");
             return;
         }
@@ -85,7 +89,8 @@ export class CoursesAPI {
         //add product to db
         const course = new courseModel({
             name: req.body.name,
-            price: req.body.price
+            price: req.body.price,
+            description: req.body.description,
         });
         const p = await course.save();
 
@@ -95,7 +100,7 @@ export class CoursesAPI {
         res.status(200).send("ok");
     }
 
-    private deleteProduct = async (req: Express.Request, res: Express.Response) => {
+    private deleteCourse = async (req: Express.Request, res: Express.Response) => {
         const { token, productID: courseID } = req.body;
         if (!(await isAdmin(token))) {
             res.status(401).send("invalid token");

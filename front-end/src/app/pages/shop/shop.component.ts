@@ -18,7 +18,7 @@ export class ShopComponent {
     });
   }
 
-  funzione() {
-console.log("funzione");
-  }
+  /* funzione() {
+    console.log("funzione");
+  } */
 }

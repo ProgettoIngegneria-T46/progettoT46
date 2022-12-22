@@ -1,0 +1,48 @@
+/* Stile generale del form */
+form {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Stile dei campi di input */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Stile del pulsante di invio */
+button[type="submit"] {
+    width: 20%;
+    background-color: #000641;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Stile del pulsante al passaggio del mouse */
+button[type="submit"]:hover {
+    background-color: #31418a;
+}
+
+/* Stile per i messaggi di errore */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+// label {
+//     color: black;
+// }

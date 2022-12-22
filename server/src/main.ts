@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import path from "path";
 import { ProductAPI } from "./api/productsApi";
 import { LoginAPI } from "./api/loginApi";
+import { CoursesAPI } from "./api/coursesApi";
 
 const pathToImages = path.resolve(path.join(__dirname, '../images/'));
 const pathToProducts = path.resolve(path.join(pathToImages, '/products/'));
@@ -29,6 +30,7 @@ app.use(fileUpload({
 
 new ProductAPI(app);
 new LoginAPI(app);
+new CoursesAPI(app);
 
 app.listen(3000, () => {
     console.log("server started");

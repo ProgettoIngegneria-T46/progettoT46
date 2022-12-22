@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SafePipe } from './safe.pipe';
+import { CastPipe } from './cast.pipe';
 
 
 
 @NgModule({
   declarations: [
-    SafePipe
+    SafePipe,
+    CastPipe
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SafePipe
+    SafePipe,
+    CastPipe
   ]
 })
 export class PipesModule { }

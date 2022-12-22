@@ -4,10 +4,18 @@
     <!-- safe(imgUrl, "url") -->
     <div class="data">
         <span class="name">
-            {{product.name}}
+            {{ item?.name || ""}}
         </span>
         <span class="price">
-            &euro;{{product.price}}
+            &euro;{{ item?.price || "" }}
+        </span>
+        <!-- <select *ngIf="isProduct(item) && toProduct(item)?.styles" > 0">
+            <option *ngFor="let style of toProduct(item)?.styles" [value]="style">
+                {{ style }}
+            </option>
+        </select> -->
+        <span class="description">
+            {{ item?.description || "" }}
         </span>
     </div>
 </main>

@@ -1,2 +1,4 @@
 <app-header bg_color="black"></app-header>
-<p>corsi works!</p>
+<div class="courses">
+    <app-display *ngFor="let c of courses" [item]="c" ></app-display>
+</div>

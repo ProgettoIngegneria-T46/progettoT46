@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true },
-    description: { type: String, required: false }
+    description: { type: String, required: false },
+    styles: { type: Array<String>, required: false },
 });
 
 //create product model
@@ -41,4 +42,4 @@ const courseSchema = new mongoose.Schema({
     subscriptions: {type: Number, required: false}
 });
 
-export const courseModel = mongoose.model("corsi", courseSchema);
+export const courseModel = mongoose.model("courses", courseSchema);

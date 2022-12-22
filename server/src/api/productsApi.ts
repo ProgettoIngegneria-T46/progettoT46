@@ -75,7 +75,7 @@ export class ProductAPI {
             res.status(401).send("invalid token");
             return;
         }
-        if (!req.files || !req.body.name || !req.body.price) {
+        if (!req.files || !req.body.name || !req.body.price || !req.body.description) {
             res.status(400).send("invalid request");
             return;
         }
@@ -83,7 +83,8 @@ export class ProductAPI {
         //add product to db
         const product = new productModel({
             name: req.body.name,
-            price: req.body.price
+            price: req.body.price, 
+            description: req.body.description,
         });
         const p = await product.save();
 
