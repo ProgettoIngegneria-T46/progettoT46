@@ -43,3 +43,12 @@ const courseSchema = new mongoose.Schema({
 });
 
 export const courseModel = mongoose.model("courses", courseSchema);
+
+const membershipSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    price: {type: Number, required: true},
+    description: {type: String, required: false},
+    endDate: {type: Date, required: true}
+});
+
+export const membershipModel = mongoose.model("memberships", membershipSchema);

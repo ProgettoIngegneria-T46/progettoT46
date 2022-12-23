@@ -6,6 +6,7 @@ import path from "path";
 import { ProductAPI } from "./api/productsApi";
 import { LoginAPI } from "./api/loginApi";
 import { CoursesAPI } from "./api/coursesApi";
+import { MembershipAPI } from "./api/membershipsApi";
 
 const pathToImages = path.resolve(path.join(__dirname, '../images/'));
 const pathToProducts = path.resolve(path.join(pathToImages, '/products/'));
@@ -31,6 +32,7 @@ app.use(fileUpload({
 new ProductAPI(app);
 new LoginAPI(app);
 new CoursesAPI(app);
+new MembershipAPI(app);
 
 app.listen(3000, () => {
     console.log("server started");

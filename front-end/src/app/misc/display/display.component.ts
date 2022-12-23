@@ -1,4 +1,4 @@
-import { membershipsUrl, coursesUrl, productsUrl} from './../../shared/routes';
+import { membershipsUrl, coursesUrl, productsUrl, productUrl, courseUrl, membershipUrl} from './../../shared/routes';
 import { Component, Input, OnInit } from '@angular/core';
 import { Course, Product, Membership} from 'src/app/shared/interfaces';
 
@@ -16,11 +16,11 @@ export class DisplayComponent implements OnInit {
   
   ngOnInit() {
     if (this.item instanceof Product) {
-      this.imgUrl = productsUrl + this.item?.id + "/image";
+      this.imgUrl = productUrl + this.item?.id + "/image";
     } else if (this.item instanceof Course) {
-      this.imgUrl = coursesUrl + this.item?.id + "/image";
+      this.imgUrl = courseUrl + this.item?.id + "/image";
     }else if (this.item instanceof Membership) {
-      this.imgUrl = membershipsUrl + this.item?.id + "/image";
+      this.imgUrl = membershipUrl + this.item?.id + "/image";
     } else {
       this.imgUrl = productsUrl + "none/image";
     }
