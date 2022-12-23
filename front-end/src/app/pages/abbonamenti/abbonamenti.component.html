@@ -1,3 +1,5 @@
 <app-header bg_color="black"></app-header>
-<p>abbonamenti works!</p>
+<div class="memberships">
+    <app-display *ngFor = "let m of memberships" [item]="m" ></app-display>
+</div>
 

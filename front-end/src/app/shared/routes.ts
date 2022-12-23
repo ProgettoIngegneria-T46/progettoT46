@@ -6,3 +6,5 @@ export const loginUrl: string = apiUrl + "login/";
 export const logoutUrl: string = apiUrl + "logout/";
 export const coursesUrl: string = apiUrl + "courses/";
 export const courseUrl: string = apiUrl + "course/";
+export const membershipsUrl: string = apiUrl + "memberships/";
+export const membershipUrl: string = apiUrl + "membership/";

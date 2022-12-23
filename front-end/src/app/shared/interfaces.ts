@@ -12,3 +12,10 @@ export class Course {
     price: number = 0;
     description: string = "";
 }
+
+export class Membership {
+    id: string = "";
+    name: string = "";
+    price: number = 0;
+    description: string = "";
+}

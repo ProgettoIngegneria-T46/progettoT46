@@ -1,6 +1,6 @@
+import { membershipsUrl, coursesUrl, productsUrl} from './../../shared/routes';
 import { Component, Input, OnInit } from '@angular/core';
-import { Course, Product } from 'src/app/shared/interfaces';
-import { productsUrl, productUrl } from 'src/app/shared/routes';
+import { Course, Product, Membership} from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-display',
@@ -11,34 +11,44 @@ export class DisplayComponent implements OnInit {
   constructor() {
 
   }
-
+  
+  imgUrl = "";
+  
   ngOnInit() {
     if (this.item instanceof Product) {
-      this.imgUrl = productUrl + this.item?.id + "/image";
-    } else if (this.item instanceof Course) {
       this.imgUrl = productsUrl + this.item?.id + "/image";
+    } else if (this.item instanceof Course) {
+      this.imgUrl = coursesUrl + this.item?.id + "/image";
+    }else if (this.item instanceof Membership) {
+      this.imgUrl = membershipsUrl + this.item?.id + "/image";
     } else {
-      this.imgUrl = productUrl + "none/image";
+      this.imgUrl = productsUrl + "none/image";
     }
   }
-
-  imgUrl = productUrl + "none/image";
-  @Input() item: Product | Course | undefined = undefined
+  @Input() item: Product | Course | Membership | undefined = undefined
   // @Input() imgUrl = "http://localhost:3000/product/123456/image";
 
-  isProduct(item: Product | Course | undefined): boolean {
+  isProduct(item: Product | Course | Membership | undefined): boolean {
     return item instanceof Product;
   }
 
-  isCourse(item: Product | Course | undefined): boolean {
+  isCourse(item: Product | Course | Membership | undefined): boolean {
     return item instanceof Course;
   }
 
-  toProduct(item: Product | Course | undefined): Product | undefined {
+  toProduct(item: Product | Course | Membership | undefined): Product | undefined {
     return item instanceof Product ? item : undefined;
   }
 
-  toCourse(item: Product | Course | undefined): Course | undefined {
+  toCourse(item: Product | Course | Membership | undefined): Course | undefined {
     return item instanceof Course ? item : undefined;
+  }
+
+  isMembership(item: Product | Course | Membership | undefined): boolean {
+    return item instanceof Membership;
+  }
+
+  toMembership(item: Product | Course | Membership | undefined): Membership | undefined {
+    return item instanceof Membership ? item : undefined;
   }
 }
