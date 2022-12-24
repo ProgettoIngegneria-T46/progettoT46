@@ -21,7 +21,6 @@ describe("GET /api/memberships", () => {
         const res = await supertest(app).get("/api/memberships");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
-        expect(res.body.length).toBe(0);
     });
 
     it("should return no elements", async () => {
