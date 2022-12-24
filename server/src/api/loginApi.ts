@@ -9,7 +9,7 @@ export class LoginAPI {
     }
 
     login = async (req: Express.Request, res: Express.Response) => {
-        console.log("login request received")
+        // console.log("login request received")
         const { email, password } = req.body;
         if (!email || !password) {
             res.status(400).send("invalid request: email or password missing");
@@ -25,7 +25,7 @@ export class LoginAPI {
         }
         //generate token
         const token = await loginToken(user[0]._id.toString());
-        console.log("Token for " + user[0].name + " is: " + token);
+        // console.log("Token for " + user[0].name + " is: " + token);
         //set return content type to json
         res.setHeader("Content-Type", "application/json");
         res.status(200).send({token});

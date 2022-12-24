@@ -31,7 +31,7 @@ export class ProductAPI {
             });
             res.send(returnData);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -53,7 +53,7 @@ export class ProductAPI {
             }
             res.status(200).send(returnData[0]);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -62,7 +62,7 @@ export class ProductAPI {
     private getProductImage = async (req: Express.Request, res: Express.Response) => {
         //return image from images/products folder with name = productID
         const p = path.join(this.pathToProducts, req.params.productID + ".png");
-        console.log(p);
+        // console.log(p);
         if (!fs.existsSync(p)) {
             // res.status(404).send("image not found");
             res.status(404).sendFile(notFoundImage);
@@ -73,15 +73,15 @@ export class ProductAPI {
 
     private putProduct = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
+        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description) {
+            res.status(400).send("invalid request");
+            return;
+        }
         if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;
         }
-        if (!req.files || !req.body.name || !req.body.price || !req.body.description) {
-            res.status(400).send("invalid request");
-            return;
-        }
-        console.log(req.files);
+        // console.log(req.files);
         //add product to db
         const product = new productModel({
             name: req.body.name,

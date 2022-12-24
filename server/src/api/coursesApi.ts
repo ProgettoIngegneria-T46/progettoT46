@@ -79,12 +79,12 @@ export class CoursesAPI {
 
     private putCourse = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
-        if (!(await isAdmin(token))) {
-            res.status(401).send("invalid token");
+        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description) {
+            res.status(400).send("invalid request");
             return;
         }
-        if (!req.files || !req.body.name || !req.body.price || !req.body.description) {
-            res.status(400).send("invalid request");
+        if (!(await isAdmin(token))) {
+            res.status(401).send("invalid token");
             return;
         }
         console.log(req.files);
