@@ -1,19 +1,13 @@
 import { app } from "../server";
 import supertest from "supertest";
 import { loginTokenModel, membershipModel, userModel } from "../dbModels";
+import mongoose from "mongoose";
 
 const mockingoose = require("mockingoose");
 
 beforeEach(async () => {
     mockingoose.resetAll();
 });
-
-/* describe("GET /api/notfound/image", () => {
-    it("should return 200", async () => {
-        const res = await supertest(app).get("/api/notfound/image");
-        expect(res.status).toBe(200);
-    });
-}); */
 
 describe("GET /api/memberships", () => {
     it("should return 200", async () => {
@@ -73,18 +67,68 @@ describe("PUT /api/membership", () => {
         const res = await supertest(app).put("/api/membership");
         expect(res.status).toBe(400);
     });
+
+    it("should return 401", async () => {
+        mockingoose(loginTokenModel).toReturn([{expires: Date.now() + 10 * 60 * 1000}], "find");
+        mockingoose(loginTokenModel).toReturn({ userID: 0 }, "findOne");
+        mockingoose(userModel).toReturn({ isAdmin: false }, "findOne");
+        mockingoose(membershipModel).toReturn({ _id: new mongoose.Types.ObjectId("000000000000000000000000")}, "save");
+        const res = await supertest(app).put("/api/membership")
+            .field("token", "1")
+            .field("name", "testMembership")
+            .field("description", "testDescription")
+            .field("price", 1.99)
+            .field("endDate", Date.now() + 10 * 60 * 1000)
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\memberships\\TshirtChadGym.png");
+        expect(res.status).toBe(401);
+    });
     
-    // it("should return 200", async () => {
-    //     mockingoose(loginTokenModel).toReturn([{expires: new Date()}]);
-    //     mockingoose(userModel).toReturn({_id: "1", isAdmin: true}, "findOne");
-    //     const res = await supertest(app).put("/api/membership").send({
-    //         "name": "test",
-    //         "price": 1,
-    //         "description": "test",
-    //         "endDate": new Date(),
-    //         "token": "test"
-    //     });
-    //     expect(res.status).toBe(200);
-    //     expect(res.body).toBeTruthy();
-    // });
+    it("should return 200", async () => {
+        mockingoose(loginTokenModel).toReturn([{expires: Date.now() + 10 * 60 * 1000}], "find");
+        mockingoose(loginTokenModel).toReturn({ userID: 0 }, "findOne");
+        mockingoose(userModel).toReturn({ isAdmin: true }, "findOne");
+        mockingoose(membershipModel).toReturn({ _id: new mongoose.Types.ObjectId("000000000000000000000000")}, "save");
+        const res = await supertest(app).put("/api/membership")
+            .field("token", "1")
+            .field("name", "testMembership")
+            .field("description", "testDescription")
+            .field("price", 1.99)
+            .field("endDate", Date.now() + 10 * 60 * 1000)
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\memberships\\TshirtChadGym.png");
+        expect(res.status).toBe(200);
+        expect(res.body).toBeTruthy();
+    });
 });
+
+describe("DELETE /api/membership", () => {
+    it("should return 400", async () => {
+        const res = await supertest(app).delete("/api/membership");
+        expect(res.status).toBe(400);
+    });
+    
+    it("should return 401", async () => {
+        mockingoose(loginTokenModel).toReturn([{expires: Date.now() + 10 * 60 * 1000}], "find");
+        mockingoose(loginTokenModel).toReturn({ userID: 0 }, "findOne");
+        mockingoose(userModel).toReturn({ isAdmin: false }, "findOne");
+        const res = await supertest(app).delete("/api/membership").send(
+            {
+                token: "1", 
+                membershipID: "000000000000000000000000"
+            });
+        expect(res.status).toBe(401);
+    });
+
+    it("should return 200", async () => {
+        mockingoose(loginTokenModel).toReturn([{expires: Date.now() + 10 * 60 * 1000}], "find");
+        mockingoose(loginTokenModel).toReturn({ userID: 0 }, "findOne");
+        mockingoose(userModel).toReturn({ isAdmin: true }, "findOne");
+        const res = await supertest(app).delete("/api/membership").send(
+            {
+                token: "1", 
+                membershipID: "000000000000000000000000"
+            });
+        expect(res.status).toBe(200);
+        expect(res.body).toBeTruthy();
+    });
+});
+

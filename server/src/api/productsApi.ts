@@ -74,6 +74,7 @@ export class ProductAPI {
     private putProduct = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
         if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description) {
+            // console.log("Invalid request");
             res.status(400).send("invalid request");
             return;
         }
@@ -81,23 +82,26 @@ export class ProductAPI {
             res.status(401).send("invalid token");
             return;
         }
-        // console.log(req.files);
-        //add product to db
         const product = new productModel({
             name: req.body.name,
             price: req.body.price, 
             description: req.body.description,
         });
         const p = await product.save();
-
+        // console.log(p._id);
+        
         const file = req.files.file;
         (file as UploadedFile).mv(path.join(this.pathToProducts, p._id + ".png"));
-
+        
         res.status(200).send("ok");
     }
 
     private deleteProduct = async (req: Express.Request, res: Express.Response) => {
         const { token, productID } = req.body;
+        if (!token || !productID) {
+            res.status(400).send("invalid request");
+            return;
+        }
         if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;

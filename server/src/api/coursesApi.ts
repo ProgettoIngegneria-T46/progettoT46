@@ -43,7 +43,7 @@ export class CoursesAPI {
             const returnData = ret.map(item => new Course(item));
             res.send(returnData);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -59,7 +59,7 @@ export class CoursesAPI {
             }
             res.status(200).send(returnData[0]);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -68,7 +68,7 @@ export class CoursesAPI {
     private getCourseImage = async (req: Express.Request, res: Express.Response) => {
         //return image from images/products folder with name = productID
         const p = path.join(this.pathToCourses, req.params.courseID + ".png");
-        console.log(p);
+        // console.log(p);
         if (!fs.existsSync(p)) {
             // res.status(404).send("image not found");
             res.status(404).sendFile(notFoundImage);
@@ -79,7 +79,7 @@ export class CoursesAPI {
 
     private putCourse = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
-        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description) {
+        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description || !req.body.endDate) {
             res.status(400).send("invalid request");
             return;
         }
@@ -87,12 +87,13 @@ export class CoursesAPI {
             res.status(401).send("invalid token");
             return;
         }
-        console.log(req.files);
+        // console.log(req.files);
         //add product to db
         const course = new courseModel({
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
+            endDate: req.body.endDate,
         });
         const p = await course.save();
 
@@ -103,7 +104,11 @@ export class CoursesAPI {
     }
 
     private deleteCourse = async (req: Express.Request, res: Express.Response) => {
-        const { token, productID: courseID } = req.body;
+        const { token, courseID } = req.body;
+        if (!token || !courseID) {
+            res.status(400).send("invalid request");
+            return;
+        }
         if (!(await isAdmin(token))) {
             res.status(401).send("invalid token");
             return;

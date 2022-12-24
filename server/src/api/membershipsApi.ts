@@ -14,6 +14,7 @@ export class MembershipAPI {
         this.app.put("/api/membership", this.putMembership);
         this.app.delete("/api/membership", this.deleteMembership);
     }
+    
 
     private readonly pathToImages = path.resolve(path.join(__dirname, '../../images/'));
     private readonly pathToMemberships = path.resolve(path.join(this.pathToImages, '/memberships/'));
@@ -101,6 +102,10 @@ export class MembershipAPI {
 
     private deleteMembership = async (req: Express.Request, res: Express.Response) => {
         const { token, membershipID } = req.body;
+        if (!token || !membershipID) {
+            res.status(400).send("invalid request");
+            return;
+        }
         if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;
