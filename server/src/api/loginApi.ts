@@ -6,6 +6,7 @@ export class LoginAPI {
     constructor(private app: Express.Application) {
         this.app.post("/api/login", this.login);
         this.app.post("/api/logout", this.logout);
+        this.app.put("/api/login", this.register);
     }
 
     login = async (req: Express.Request, res: Express.Response) => {
@@ -52,7 +53,7 @@ export class LoginAPI {
         }
         const user = await userModel.find({ email });
         if (user.length > 0) {
-            res.status(400).send("user already exists");
+            res.status(401).send("user already exists");
             return;
         }
         const newUser = new userModel({
@@ -66,7 +67,8 @@ export class LoginAPI {
             password,
             subscriptionDate
         });
-        const token = await newUser.save();
+        const id = await newUser.save();
+        const token = await loginToken(id._id.toString());
         res.status(200).send({token});
     }
 }

@@ -7,7 +7,7 @@ const tokenTime = 10 * 60 * 1000;
 export const loginToken = async (userID: string): Promise<string> => {
     const _token = await loginTokenModel.find({ userID });
     if (_token && _token.length > 0) {
-        console.log("Token found");
+        // console.log("Token found");
         //if token expired
         if (_token[0].expires < new Date()) {
             console.log("Token expired");
