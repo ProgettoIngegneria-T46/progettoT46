@@ -4,6 +4,7 @@ import { membershipModel } from "../dbModels";
 import fs from "fs";
 import { UploadedFile } from "express-fileupload";
 import { isAdmin } from "../tokenHandle";
+import { notFoundImage } from "../server";
 
 export class MembershipAPI {
     constructor(private app: Express.Application) {
@@ -31,7 +32,7 @@ export class MembershipAPI {
             });
             res.send(returnData);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -55,7 +56,7 @@ export class MembershipAPI {
             }
             res.status(200).send(returnData[0]);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             res.status(500).send("error");
             return;
         }
@@ -63,9 +64,10 @@ export class MembershipAPI {
 
     private getMembershipImage = async (req: Express.Request, res: Express.Response) => {
         const p = path.join(this.pathToMemberships, req.params.membershipID + ".png");
-        console.log(p);
+        // console.log(p);
         if (!fs.existsSync(p)) {
-            res.status(404).send("image not found");
+            // res.status(404).send("image not found");
+            res.status(404).sendFile(notFoundImage);
             return;
         }
         res.sendFile(p);
@@ -73,15 +75,16 @@ export class MembershipAPI {
 
     private putMembership = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
+        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description || !req.body.endDate) {
+            res.status(400).send("invalid request");
+            // console.log(req.body);
+            return;
+        }
         if (!(await isAdmin(token))){
             res.status(401).send("invalid token");
             return;
         }
-        if (!req.files || !req.body.name || !req.body.price || !req.body.description || !req.body.endDate) {
-            res.status(400).send("invalid request");
-            return;
-        }
-        console.log(req.files);
+        // console.log(req.files);
         const membership = new membershipModel({
             name: req.body.name,
             price: req.body.price, 

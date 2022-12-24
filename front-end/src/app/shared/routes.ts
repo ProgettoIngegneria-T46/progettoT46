@@ -1,5 +1,7 @@
 export const address: string = 'localhost';
 export const apiUrl: string = "http://" + address + ":3000/api/";
+export const notFound: string = apiUrl + "notfound";
+export const notFoundImage: string = notFound + "/image";
 export const productsUrl: string = apiUrl + "products/";
 export const productUrl: string = apiUrl + "product/";
 export const loginUrl: string = apiUrl + "login/";

@@ -15,7 +15,9 @@ export class CorsiComponent {
   constructor(private httpClient: HttpClient) {
     const sub = this.httpClient.get(coursesUrl).subscribe((data) => {
       console.log(data);
-      this.courses = data as Course[];
+      this.courses = (data as []).map(c => {
+        return new Course(c);
+      });
       sub.unsubscribe();
     });
   }

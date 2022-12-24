@@ -5,6 +5,7 @@ import { courseModel } from "../dbModels";
 import { Document } from "mongoose";
 import { isAdmin } from "../tokenHandle";
 import { UploadedFile } from "express-fileupload";
+import { notFoundImage } from "../server";
 
 class Course {
     public id: string;
@@ -69,7 +70,8 @@ export class CoursesAPI {
         const p = path.join(this.pathToCourses, req.params.courseID + ".png");
         console.log(p);
         if (!fs.existsSync(p)) {
-            res.status(404).send("image not found");
+            // res.status(404).send("image not found");
+            res.status(404).sendFile(notFoundImage);
             return;
         }
         res.sendFile(p);

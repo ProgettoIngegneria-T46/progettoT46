@@ -4,6 +4,7 @@ import { productModel } from "../dbModels";
 import fs from "fs";
 import { UploadedFile } from "express-fileupload";
 import { isAdmin } from "../tokenHandle";
+import { notFoundImage } from "../server";
 
 export class ProductAPI {
     constructor(private app: Express.Application) {
@@ -63,7 +64,8 @@ export class ProductAPI {
         const p = path.join(this.pathToProducts, req.params.productID + ".png");
         console.log(p);
         if (!fs.existsSync(p)) {
-            res.status(404).send("image not found");
+            // res.status(404).send("image not found");
+            res.status(404).sendFile(notFoundImage);
             return;
         }
         res.sendFile(p);

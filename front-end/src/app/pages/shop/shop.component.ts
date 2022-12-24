@@ -14,7 +14,9 @@ export class ShopComponent {
 
   constructor(private httpClient: HttpClient) {
     this.httpClient.get(productsUrl).subscribe((data) => {
-      this.products = data as Product[];
+      this.products = (data as []).map(p => {
+        return new Product(p);
+      });
     });
   }
 
