@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MiscModule } from 'src/app/misc/misc.module';
 
 import { HomeComponent } from './home.component';
 
@@ -8,7 +10,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports: [
+        MiscModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
 

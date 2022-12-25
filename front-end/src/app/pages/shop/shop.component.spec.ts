@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MiscModule } from 'src/app/misc/misc.module';
 
 import { ShopComponent } from './shop.component';
 
@@ -8,7 +10,11 @@ describe('ShopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShopComponent ]
+      declarations: [ ShopComponent ],
+      imports: [
+        HttpClientModule,
+        MiscModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +23,7 @@ describe('ShopComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should render everything', () => {
     expect(component).toBeTruthy();
   });
 });

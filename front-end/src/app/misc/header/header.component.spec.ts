@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { LoginModule } from 'src/app/login/login.module';
 
 import { HeaderComponent } from './header.component';
 
@@ -8,7 +11,12 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      imports: [
+        HttpClientModule,
+        LoginModule,
+        AppRoutingModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +25,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create every button', () => {
     expect(component).toBeTruthy();
   });
 });

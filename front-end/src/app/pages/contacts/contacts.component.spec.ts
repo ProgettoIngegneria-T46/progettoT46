@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MiscModule } from 'src/app/misc/misc.module';
 
 import { ContactsComponent } from './contacts.component';
 
@@ -8,7 +10,11 @@ describe('ContactsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactsComponent ]
+      declarations: [ ContactsComponent ],
+      imports: [
+        MiscModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +23,7 @@ describe('ContactsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should render everything', () => {
     expect(component).toBeTruthy();
   });
 });

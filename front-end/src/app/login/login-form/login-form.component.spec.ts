@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxBootstrapIconsModule, pencilFill } from 'ngx-bootstrap-icons';
 
 import { LoginFormComponent } from './login-form.component';
 
@@ -8,7 +10,11 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginFormComponent ]
+      declarations: [ LoginFormComponent ],
+      imports: [
+        HttpClientModule,
+        NgxBootstrapIconsModule.pick({pencilFill})
+      ]
     })
     .compileComponents();
 
@@ -17,7 +23,7 @@ describe('LoginFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created with all components', () => {
     expect(component).toBeTruthy();
   });
 });

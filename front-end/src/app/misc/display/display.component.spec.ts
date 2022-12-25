@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 import { DisplayComponent } from './display.component';
 
@@ -8,7 +9,10 @@ describe('DisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisplayComponent ]
+      declarations: [ DisplayComponent ],
+      imports: [
+        PipesModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +21,7 @@ describe('DisplayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be working', () => {
     expect(component).toBeTruthy();
   });
 });

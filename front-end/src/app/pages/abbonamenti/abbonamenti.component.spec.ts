@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MiscModule } from 'src/app/misc/misc.module';
 
 import { AbbonamentiComponent } from './abbonamenti.component';
 
@@ -8,7 +10,11 @@ describe('AbbonamentiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AbbonamentiComponent ]
+      declarations: [ AbbonamentiComponent ],
+      imports: [
+        HttpClientModule,
+        MiscModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +23,7 @@ describe('AbbonamentiComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should load everything', () => {
     expect(component).toBeTruthy();
   });
 });
