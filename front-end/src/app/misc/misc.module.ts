@@ -6,13 +6,15 @@ import { LoginModule } from '../login/login.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
+import { CartComponent } from './cart/cart.component';
 
 
 
 @NgModule({
   declarations: [
     DisplayComponent,
-    HeaderComponent
+    HeaderComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
