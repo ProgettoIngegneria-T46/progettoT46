@@ -51,4 +51,8 @@ export class DisplayComponent implements OnInit {
   toMembership(item: Product | Course | Membership | undefined): Membership | undefined {
     return item instanceof Membership ? item : undefined;
   }
+
+  addToCart(){
+    console.log("Not implemented yet!");
+  }
 }

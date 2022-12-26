@@ -21,7 +21,7 @@ main{
         height: 200px;
         width: 200px;
         object-fit: contain;
-        
+        border-radius: 10px;
     }
 
     .data{
@@ -31,5 +31,16 @@ main{
         align-items: center;
         justify-content: center;
         gap: 5px;
+    }
+
+    button{
+        margin-top: 10px;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: #000641;
+        color: white;
+        cursor: pointer;
     }
 }
