@@ -13,9 +13,7 @@ form {
 }
 
 /* Stile dei campi di input */
-input[type="text"],
-input[type="email"],
-textarea {
+input[type="text"], input[type="email"], textarea {
     width: 80%;
     padding: 12px 20px;
     // margin: 4px 0;
@@ -24,7 +22,7 @@ textarea {
     border-radius: 4px;
 }
 
-textarea{
+textarea {
     flex-grow: 1;
 }
 
@@ -55,7 +53,7 @@ button[type="submit"]:hover {
 //     color: black;
 // }
 
-main{
+main {
     margin: 20px;
     display: flex;
     flex-direction: row;
