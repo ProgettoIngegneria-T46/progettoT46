@@ -308,7 +308,7 @@ Aggiunge un abbonamento al database.
     name: string,
     price: number,
     description: string,
-    endDate: Date
+    endDate: Date,
     file: File
 }
 ```
