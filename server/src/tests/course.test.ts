@@ -57,7 +57,7 @@ describe("GET /api/course/:courseID/image", () => {
     });
     
     it("should return 200", async () => {
-        const res = await supertest(app).get("/api/course/Pilates/image");
+        const res = await supertest(app).get("/api/course/63a4c05423a222b48af300da/image");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     });
@@ -81,7 +81,7 @@ describe("PUT /api/course", () => {
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
             .field("subscriptions", 0)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\courses\\Aerobica.png");
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
         expect(res.status).toBe(401);
     });
     
@@ -96,7 +96,7 @@ describe("PUT /api/course", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\courses\\Aerobica.png");
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     });

@@ -73,7 +73,7 @@ export class ProductAPI {
 
     private putProduct = async (req: Express.Request, res: Express.Response) => {
         const { token } = req.body;
-        if (!token || !req.files || !req.body.name || !req.body.price || !req.body.description) {
+        if (!token || !req.files?.file || !req.body.name || !req.body.price || !req.body.description) {
             // console.log("Invalid request");
             res.status(400).send("invalid request");
             return;
@@ -93,7 +93,7 @@ export class ProductAPI {
         const file = req.files.file;
         (file as UploadedFile).mv(path.join(this.pathToProducts, p._id + ".png"));
         
-        res.status(200).send("ok");
+        res.status(200).send({ id: p._id });
     }
 
     private deleteProduct = async (req: Express.Request, res: Express.Response) => {

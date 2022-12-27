@@ -65,7 +65,7 @@ export class MembershipAPI {
 
     private getMembershipImage = async (req: Express.Request, res: Express.Response) => {
         const p = path.join(this.pathToMemberships, req.params.membershipID + ".png");
-        // console.log(p);
+        console.log(p);
         if (!fs.existsSync(p)) {
             // res.status(404).send("image not found");
             res.status(404).sendFile(notFoundImage);

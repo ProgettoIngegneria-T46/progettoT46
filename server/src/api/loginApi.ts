@@ -47,10 +47,11 @@ export class LoginAPI {
     register = async (req: Express.Request, res: Express.Response) => {
         const { cf, name, surname, birthDate, phoneNumber, email, address, password, subscriptionDate } = req.body;
         //if one field is missing, return error
-        if (!cf || !name || !surname || !birthDate || !phoneNumber || !email || !address || !password || !subscriptionDate) {
+        if (!cf || !name || !surname || !birthDate || !phoneNumber || !email || !address || !password ) {
             res.status(400).send("invalid request: one or more fields are missing");
             return;
         }
+        const _subscriptionDate = subscriptionDate || new Date();
         const user = await userModel.find({ email });
         if (user.length > 0) {
             res.status(401).send("user already exists");
@@ -65,7 +66,7 @@ export class LoginAPI {
             email,
             address,
             password,
-            subscriptionDate
+            subscriptionDate: _subscriptionDate
         });
         const id = await newUser.save();
         const token = await loginToken(id._id.toString());

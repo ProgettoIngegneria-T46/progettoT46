@@ -56,7 +56,7 @@ describe("GET /api/membership/:membershipID/image", () => {
     });
     
     it("should return 200", async () => {
-        const res = await supertest(app).get("/api/membership/63a62358449ef3d9f6f6c2da/image");
+        const res = await supertest(app).get("/api/membership/63a5ba2dc960327f84435083/image");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     });
@@ -79,7 +79,7 @@ describe("PUT /api/membership", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\memberships\\TshirtChadGym.png");
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
         expect(res.status).toBe(401);
     });
     
@@ -94,7 +94,7 @@ describe("PUT /api/membership", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\memberships\\TshirtChadGym.png");
+            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     });
