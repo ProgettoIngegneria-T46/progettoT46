@@ -33,6 +33,7 @@ npm install
     - [GET /api/membership/:id/image](#get-apimembershipidimage)
     - [PUT /api/membership](#put-apimembership)
     - [DELETE /api/membership](#delete-apimembership)
+  - [Testing](#testing-1)
 
 # Frontend
 Per eseguire il frontend è necessario accedere alla cartella frontend e avviarlo tramite il comando:
@@ -41,6 +42,7 @@ npm start
 ```
 Sarà necessario avere la porta 4200 non occupata sul proprio dispositivo.
 
+---------------------
 ## Testing
 Per eseguire i test è necessario accedere alla cartella frontend e avviarli tramite il comando:
 ```properties
@@ -327,3 +329,10 @@ Elimina un abbonamento dal database.
     membershipID: string
 }
 ```
+----------------
+## Testing
+Per eseguire i test è necessario accedere alla cartella server e avviarli tramite il comando:
+```properties
+npm run test
+```
+Una volta usato verrà aperta una pagina web con i risultati dei test.
