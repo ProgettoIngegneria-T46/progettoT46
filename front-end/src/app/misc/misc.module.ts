@@ -7,7 +7,11 @@ import { PipesModule } from '../pipes/pipes.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { CartComponent } from './cart/cart.component';
+import { NgxBootstrapIconsModule, cart } from 'ngx-bootstrap-icons';
 
+const icons = {
+  cart
+};
 
 
 @NgModule({
@@ -20,7 +24,8 @@ import { CartComponent } from './cart/cart.component';
     CommonModule,
     PipesModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
+    NgxBootstrapIconsModule.pick(icons)
   ],
   exports: [
     DisplayComponent,

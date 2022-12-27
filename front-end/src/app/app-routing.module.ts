@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './misc/cart/cart.component';
 import { AbbonamentiComponent } from './pages/abbonamenti/abbonamenti.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { CorsiComponent } from './pages/corsi/corsi.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'contattaci', component: ContactsComponent },
   { path: 'abbonamenti', component: AbbonamentiComponent },
   { path: 'corsi', component: CorsiComponent },
+  { path: 'carrello', component: CartComponent },
   { path: '**', redirectTo: '/home' }
 ];
 

@@ -1,1 +1,44 @@
-<p>cart works!</p>
+<!-- Carrello acquisti -->
+<div id="cart">
+    <h2>Carrello acquisti</h2>
+    <!-- Elenco degli elementi nel carrello -->
+    <ul id="cart-items">
+    </ul>
+    <!-- Totale del carrello -->
+    <div id="cart-total">Totale: $<span id="cart-total-price">0</span></div>
+    <!-- Pulsanti per aggiungere o rimuovere elementi -->
+    <button id="add-item-button">Aggiungi elemento</button>
+    <button id="remove-item-button">Rimuovi elemento</button>
+  </div>
+  
+  <!-- Modulo di aggiunta elemento -->
+  <div id="add-item-modal" style="display: none;">
+    <h2>Aggiungi elemento al carrello</h2>
+    <!-- Form per inserimento dati elemento -->
+    <form id="add-item-form">
+      <label for="item-name">Nome elemento:</label>
+      <input type="text" id="item-name" />
+      <br />
+      <label for="item-price">Prezzo elemento:</label>
+      <input type="number" id="item-price" />
+      <br />
+      <button type="submit">Aggiungi</button>
+      <button id="cancel-add-item">Annulla</button>
+    </form>
+  </div>
+  
+  <!-- Modulo di rimozione elemento -->
+  <div id="remove-item-modal" style="display: none;">
+    <h2>Rimuovi elemento dal carrello</h2>
+    <!-- Form per selezione elemento da rimuovere -->
+    <form id="remove-item-form">
+      <label for="item-name">Nome elemento:</label>
+      <select id="item-name">
+        <!-- Options verranno aggiunte dinamicamente con JavaScript -->
+      </select>
+      <br />
+      <button type="submit">Rimuovi</button>
+      <button id="cancel-remove-item">Annulla</button>
+    </form>
+  </div>
+  
