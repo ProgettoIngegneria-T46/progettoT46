@@ -83,7 +83,7 @@ describe("PUT /api/membership", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
+            .attach("file", __dirname + "\\..\\..\\images\\misc\\notFound.png");
         expect(res.status).toBe(401);
     }));
     it("should return 200", () => __awaiter(void 0, void 0, void 0, function* () {
@@ -97,7 +97,7 @@ describe("PUT /api/membership", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
+            .attach("file", __dirname + "\\..\\..\\images\\misc\\notFound.png");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     }));

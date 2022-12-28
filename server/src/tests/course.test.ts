@@ -81,7 +81,8 @@ describe("PUT /api/course", () => {
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
             .field("subscriptions", 0)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
+            .attach("file", __dirname + "\\..\\..\\images\\misc\\notFound.png");
+            // .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
         expect(res.status).toBe(401);
     });
     
@@ -96,7 +97,7 @@ describe("PUT /api/course", () => {
             .field("description", "testDescription")
             .field("price", 1.99)
             .field("endDate", Date.now() + 10 * 60 * 1000)
-            .attach("file", "C:\\Users\\micle\\Documents\\programmi\\Node\\progettoT46\\server\\images\\misc\\notFound.png");
+            .attach("file", __dirname + "\\..\\..\\images\\misc\\notFound.png");
         expect(res.status).toBe(200);
         expect(res.body).toBeTruthy();
     });
