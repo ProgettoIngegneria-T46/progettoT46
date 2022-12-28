@@ -69,7 +69,7 @@ class MembershipAPI {
         });
         this.getMembershipImage = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const p = path_1.default.join(this.pathToMemberships, req.params.membershipID + ".png");
-            console.log(p);
+            // console.log(p);
             if (!fs_1.default.existsSync(p)) {
                 // res.status(404).send("image not found");
                 res.status(404).sendFile(server_1.notFoundImage);

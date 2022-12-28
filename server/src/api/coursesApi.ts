@@ -27,7 +27,7 @@ class Course {
 
 export class CoursesAPI {
     constructor(private app: Express.Application) {
-        this.app.get("/api/courses", this.getCorses);
+        this.app.get("/api/courses", this.getCourses);
         this.app.get("/api/course/:courseID", this.getCourse);
         this.app.get("/api/course/:courseID/image", this.getCourseImage);
         this.app.put("/api/course", this.putCourse);
@@ -37,7 +37,7 @@ export class CoursesAPI {
     private readonly pathToImages = path.resolve(path.join(__dirname, '../../images/'));
     private readonly pathToCourses = path.resolve(path.join(this.pathToImages, '/courses/'));
 
-    private getCorses = async (req: Express.Request, res: Express.Response) => {
+    private getCourses = async (req: Express.Request, res: Express.Response) => {
         try {
             const ret = await courseModel.find({});
             const returnData = ret.map(item => new Course(item));

@@ -18,7 +18,7 @@ export const loginToken = async (userID: string): Promise<string> => {
         return _token[0]._id.toString();
     }
     //generate token
-    console.log("Token not found");
+    // console.log("Token not found");
     return generateToken(userID);
 }
 

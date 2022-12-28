@@ -21,7 +21,7 @@ describe('DisplayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be working', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

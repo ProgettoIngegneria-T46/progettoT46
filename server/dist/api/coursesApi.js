@@ -33,7 +33,7 @@ class CoursesAPI {
         this.app = app;
         this.pathToImages = path_1.default.resolve(path_1.default.join(__dirname, '../../images/'));
         this.pathToCourses = path_1.default.resolve(path_1.default.join(this.pathToImages, '/courses/'));
-        this.getCorses = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getCourses = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const ret = yield dbModels_1.courseModel.find({});
                 const returnData = ret.map(item => new Course(item));
@@ -109,7 +109,7 @@ class CoursesAPI {
             fs_1.default.rmSync(path_1.default.join(this.pathToCourses, courseID + ".png"));
             res.status(200).send("ok");
         });
-        this.app.get("/api/courses", this.getCorses);
+        this.app.get("/api/courses", this.getCourses);
         this.app.get("/api/course/:courseID", this.getCourse);
         this.app.get("/api/course/:courseID/image", this.getCourseImage);
         this.app.put("/api/course", this.putCourse);

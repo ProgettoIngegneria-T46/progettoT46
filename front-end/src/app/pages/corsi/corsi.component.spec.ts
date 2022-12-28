@@ -23,7 +23,7 @@ describe('CorsiComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should render everything', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

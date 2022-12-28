@@ -25,7 +25,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create every button', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -26,7 +26,7 @@ const loginToken = (userID) => __awaiter(void 0, void 0, void 0, function* () {
         return _token[0]._id.toString();
     }
     //generate token
-    console.log("Token not found");
+    // console.log("Token not found");
     return generateToken(userID);
 });
 exports.loginToken = loginToken;

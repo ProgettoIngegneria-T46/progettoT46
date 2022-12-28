@@ -23,7 +23,7 @@ describe('AbbonamentiComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should load everything', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
